@@ -2,6 +2,7 @@ import dash
 import dash_html_components as html
 import dash_core_components as dcc
 import plotly.graph_objs as go
+import plotly.io as pio
 import pandas as pd
 from read_from_cassandra import read_daily_table
 from plotly.subplots import make_subplots
@@ -9,7 +10,6 @@ import plotly.graph_objs as go
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-import pandas as pd
 ###############################
 # Pulling data from Cassandra #
 ###############################
@@ -43,14 +43,12 @@ title = 'Daily Hate Trends.'
 
 
 # Get trends data
-#df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv")
 df=get_data('dailytrend')
 df2=get_data('overalldailytrend')
 df2.columns=['date','overallcount']
 df.columns=['date','hatecount']
 df_merged=df2.merge(df, how='left',on='date')
 df_merged=df_merged.fillna(0)
-#print(df_merged.head())
 
 trace_high = go.Scatter(
     x=df_merged.date,
@@ -115,10 +113,7 @@ fig3 = dict(
             layout= {"title": {"text": "Users with most hateful tweet"}}
             )
 
-# To display the figure defined by this dict, use the low-level plotly.io.show function
-import plotly.io as pio
 
-# Now here's the Dash part:
 
 app.layout = html.Div([
     dcc.Graph(id='overall-tweets', figure=fig),
@@ -128,60 +123,6 @@ app.layout = html.Div([
 ])
 
 
-
-'''
-app.layout = html.Div(
-    [html.H2(title, style=text_style),
-     html.Div([
-         dcc.Dropdown(
-             id='tag-dropdown',
-             options=[{'label': tag, 'value': tag} for tag in all_tags],
-             #value=all_tags[0],
-             placeholder="Select a Stackoverflow Tag.",
-             optionHeight=18
-         ),
-     ], style={'width': '20%', 'display': 'inline-block', 'fontColor': 'blue'}),
-     html.Div([
-         dcc.Dropdown(
-             id='keyword-dropdown',
-             placeholder="Now select an associated keyword.",
-             optionHeight=18
-         ),
-     ], style={'width': '20%', 'display': 'inline-block'}
-     ),
-     html.Hr(),
-     html.Div(id='display-selected-values'),
-     ]
-)
-
-
-@app.callback(
-    dash.dependencies.Output('keyword-dropdown', 'options'),
-    [dash.dependencies.Input('tag-dropdown', 'value')])
-def update_date_dropdown(tag):
-    print('Got {} as tag'.format(tag))
-    print(keys_dict)
-    return [{'label': i, 'value': i} for i in keys_dict[tag]]
-
-
-@app.callback(
-    dash.dependencies.Output('display-selected-values', 'children'),
-    [dash.dependencies.Input('keyword-dropdown', 'value'),
-     dash.dependencies.Input('tag-dropdown', 'value')])
-def display_graph(selected_value_1, selected_value_2):
-    if selected_value_1 and selected_value_2:
-        dates = read_one_from_cassandra(selected_value_2, selected_value_1)
-        return dcc.Graph(figure=go.Figure(data=[go.Bar(x=datetime_x_y(dates)[0],
-                                                       y=datetime_x_y(dates)[1],
-                                                       marker=go.bar.Marker(color='rgb(26, 118, 255)')
-                                                       )], layout={
-            'title':'Count of uses of the keyword: {0} within posts tagged with: {1}'.format(selected_value_1, selected_value_2),
-        'yaxis': {'title':'Count per month'}
-        }
-                                          ))
-    else:
-        pass
-'''
 
 if __name__ == '__main__':
     #application.run(host=os.environ["DASH_DNS"], port=80)
