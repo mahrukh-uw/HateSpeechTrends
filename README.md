@@ -1,9 +1,9 @@
 ## Speech Trends on Social Media
 I developed this project during my Data Engineering Fellowship at Insight Data Science that can help social network's operational teams to perform comprehensive content moderation and content filtering.
 ## Motivation:
-*. Create a Web app to detect hate speech trends on social media.
-*. Identification of hate content is an important challenge for the social networks and many posts on the social networks may have hate speech or toxic content. 
-*. The Engineering motivation behid this web app was to create an efficiant, robust and scalable big data batching pipeline using opensource and NoSQL technology.
+* Create a Web app to detect hate speech trends on social media.
+* Identification of hate content is an important challenge for the social networks and many posts on the social networks may have hate speech or toxic content. 
+* The Engineering motivation behid this web app was to create an efficiant, robust and scalable big data batching pipeline using opensource and NoSQL technology.
 ## Data Pipeline
 ![alt tag](https://github.com/mahrukh-uw/HateSpeechTrends/blob/master/images/system_architecture.png)
 
