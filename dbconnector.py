@@ -1,4 +1,3 @@
-#https://github.com/petruz93/BigData_CovidTweetAnalysis/blob/master/covid_tweet_analysis/spark_save_tweets_driver.py
 import socket
 from pyspark.sql import DataFrame
 from pyspark.streaming import StreamingContext
