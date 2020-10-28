@@ -26,7 +26,7 @@ sc.setLogLevel('ERROR')
 s3_path="s3n://mahrukh-s3/tweets/tweets/{}"
 
 #lexicon_file="combined_dict.txt"
-lexicon_file="refined_ngram_dict2.csv"
+lexicon_file="./lexicons/refined_ngram_dict2.csv"
 #lexicon_file="processed-uds-lsv-baselexicon.txt"
 def get_data(s3_path):
 	aws_profile = "myaws"
