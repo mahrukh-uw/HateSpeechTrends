@@ -126,4 +126,4 @@ app.layout = html.Div([
 
 if __name__ == '__main__':
     #application.run(host=os.environ["DASH_DNS"], port=80)
-    application.run(host='0.0.0.0', port=8050, debug=True)
+    application.run(host='0.0.0.0', port=80, debug=True)
