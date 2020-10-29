@@ -9,7 +9,7 @@ I developed this project during my Data Engineering Fellowship at Insight Data S
 
 To handle the problem of hatespeech on Twitter I created this app on AWS because twitter doesn't have automatic content moderation algorithm .I downloaded different datasets from 
 different sources, some of them are: t-davidson/hate-speech-and-offensive-language , https://files.pushshift.io/twitter/US_PoliticalTweets , https://github.com/ziqizhang/chase
-Databases : Hate Speech Detection , Hate speech Twitter Annotations , US political tweets
+Databases : Hate Speech Detection , Hate speech Twitter Annotations , US political tweets.
  I analzyed these datasets in batch processing mode.
 I clean and pre-processed the data , after normalization I stored batches of structured data on S3, for Ingestion I used Apache Spark where text- processing and matching with Lexicon was performed. (Lexicon is a pre-defined dictionar or set of keywords created by some of the researchers and social media comapnies).
 Cassandra was used for storing results or trends and lastly, I used Plotly|Dash to visualize trends.
