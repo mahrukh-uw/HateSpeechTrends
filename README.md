@@ -3,7 +3,7 @@ I developed this project during my Data Engineering Fellowship at Insight Data S
 ## Motivation:
 * Create a Web app to detect hate speech trends on social media.
 * Identification of hate content is an important challenge for the social networks and many posts on the social networks may have hate speech or toxic content. 
-* The Engineering motivation behid this web app was to create an efficiant, robust and scalable big data batching pipeline using opensource and NoSQL technology.
+* The Engineering motivation behid this web app was to create an efficiant, robust and scalable big data pipeline using batch processing, opensource and NoSQL technology.
 ## Data Pipeline
 ![alt tag](https://github.com/mahrukh-uw/HateSpeechTrends/blob/master/images/system_architecture.png)
 
